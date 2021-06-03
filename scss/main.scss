@@ -1,3 +1,23 @@
+.shoe-red{
+  --clr-outer: rgb(151, 24, 24);
+  --clr-inner: rgb(252, 143, 0);
+  --clr-accent: rgb(80, 26, 10);
+}
+
+.shoe-white{
+  --clr-inner: #2a9d8f;
+  --clr-outer: #264653;
+  --clr-accent: #e76f51;
+}
+
+.shoe-blue{
+  --clr-inner: #ff5593;
+  --clr-outer: #ff0062;
+  --clr-accent: #704986;
+}
+
+
+
 *,
 *::before,
 *::after {
@@ -93,8 +113,105 @@ section {
 
 .section-title {
   text-align: center;
-  font-size: clamp(2.5rem, calc(5vw + 1rem), 4rem);
+  font-size: clamp(2.5rem, calc(5vw + 1rem), 3rem);
   line-height: 1;
   color: rgb(61, 64, 95);
   margin-bottom: 5rem;
 }
+
+.featured {
+  background: #eee;
+
+  &__item{
+    display: block;
+    position: relative;
+    transform: scale(.85);
+    transition: transform 250ms ease-in-out;
+    text-decoration: none;
+    color:#333;
+    text-align: center;
+
+    
+
+    &:hover,
+    &:focus {
+      transform: scale(1);
+
+      .featured__details{
+        opacity: 1;
+      }
+    }
+
+    &::after{
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      padding: 75% 75% 0 0;
+      background: #b0d7e0;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+  }
+
+  &__details{
+    opacity: 0;
+
+
+    span{
+      display: block;
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+  }
+}
+
+.product{
+  background: radial-gradient(var(--clr-inner, orange), var(--clr-outer, purple));
+  padding: 3em;
+  border-radius: 3em;
+  margin-bottom: 3em;
+  text-align: center;
+
+  &__title{
+    font-size: clamp(3rem, calc(5vw + 1rem), 4rem);
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 0 .2em rgba(#000, .2);
+
+  }
+
+  &__image{
+    margin: -5em 0 0 0;
+
+  }
+
+  @media (min-width: 45em){
+    text-align: left;
+
+    &__title{
+      margin: 0;
+    }
+
+    &__image{
+      float: right;
+      width: 65%;
+      shape-outside: url(../img/shoe-1.png);
+      shape-margin: 1em;
+      margin: 0 -5em 0 0;
+    }
+
+    &.shoe-left{
+      .product__image{
+        float: left;
+        shape-outside: url(../img/shoe-2.png);
+        margin: 0 0 0 -5em;
+      }
+    }
+
+  }
+
+}
+
